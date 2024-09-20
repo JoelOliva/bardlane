@@ -1,0 +1,25 @@
+﻿#services {
+    width: 450px;
+    word-break: break-word;
+}
+
+#bio {
+    width: 650px;
+    word-break: break-word;
+}
+
+#service-description {
+    font-size: 1.1em;
+}
+
+#delivery-time {
+    color: dimgray;
+    font-weight: bold;
+    text-align: right;
+}
+
+#bio img {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+}
