@@ -3,50 +3,89 @@
 @{
 }
 
-<div class="row row-cols-1 row-cols-md-2 row-cols-md-4">
-	<a class="nav-link text-dark" asp-page="/Profile">
-		<div class="card col mb-3">
-			<img class="img-fluid" src="https://www.adobe.com/creativecloud/photography/discover/media_1211f0f1379c0ec7b3758e0970180a380cff91073.png?width=750&format=png&optimize=medium" alt="Portrait">
-			<div class="p-2">
-				<h5 class="fw-bold">Producer 1</h5>
-				<p>My little short about me section over here, please read me</p>
-			</div>
+<div class="d-flex">
+	<div id="filter" class="fs-5 mt-5">
+		<div>
+			<input type="checkbox" id="jazz" checked/>
+			<label for="jazz">jazz</label>
 		</div>
-	</a>
-	<a class="nav-link text-dark" asp-page="/Profile">
-		<div class="card col mb-3">
-			<img class="img-fluid" src="https://www.adobe.com/creativecloud/photography/discover/media_1211f0f1379c0ec7b3758e0970180a380cff91073.png?width=750&format=png&optimize=medium" alt="Portrait">
-			<div class="p-2">
-				<h5 class="fw-bold">Producer 1</h5>
-				<p>My little short about me section over here, please read me</p>
-			</div>
+		<div>
+			<input type="checkbox" id="country"/>
+			<label for="country">country</label>
 		</div>
-	</a>
-	<a class="nav-link text-dark" asp-page="/Profile">
-		<div class="card col mb-3">
-			<img class="img-fluid" src="https://www.adobe.com/creativecloud/photography/discover/media_1211f0f1379c0ec7b3758e0970180a380cff91073.png?width=750&format=png&optimize=medium" alt="Portrait">
-			<div class="p-2">
-				<h5 class="fw-bold">Producer 1</h5>
-				<p>My little short about me section over here, please read me</p>
-			</div>
+		<div>
+			<input type="checkbox" id="rock" checked/>
+			<label for="rock">rock</label>
 		</div>
-	</a>
-	<a class="nav-link text-dark" asp-page="/Profile">
-		<div class="card col mb-3">
-			<img class="img-fluid" src="https://www.adobe.com/creativecloud/photography/discover/media_1211f0f1379c0ec7b3758e0970180a380cff91073.png?width=750&format=png&optimize=medium" alt="Portrait">
-			<div class="p-2">
-				<h5 class="fw-bold">Producer 1</h5>
-				<p>My little short about me section over here, please read me</p>
-			</div>
+		<div>
+			<input type="checkbox" id="pop"/>
+			<label for="pop">pop</label>
 		</div>
-	</a>
-	<a class="nav-link text-dark" asp-page="/Profile">
-		<div class="card col mb-3">
-			<img class="img-fluid" src="https://www.adobe.com/creativecloud/photography/discover/media_1211f0f1379c0ec7b3758e0970180a380cff91073.png?width=750&format=png&optimize=medium" alt="Portrait">
-			<div class="p-2">
-				<h5 class="fw-bold">Producer 1</h5>
-				<p>My little short about me section over here, please read me</p>
-			</div>
+		<div>
+			<input type="checkbox" id="classical"/>
+			<label for="classical">classical</label>
 		</div>
-	</a>
+		<div>
+			<input type="checkbox" id="techno"/>
+			<label for="techno">techno</label>
+		</div>
+		<div>
+			<input type="checkbox" id="funk"/>
+			<label for="funk">funk</label>
+		</div>
+		<div>
+			<input type="checkbox" id="folk"/>
+			<label for="folk">folk</label>
+		</div>
+	</div>
+	<div class="row row-cols-2 row-cols-md-3 row-cols-md-4">
+		<a class="nav-link text-dark" asp-page="/Profile">
+			<div class="mb-3 text-center">
+				<img class="img-fluid mb-3" src="https://img.freepik.com/free-photo/portrait-man-laughing_23-2148859448.jpg?size=338&ext=jpg&ga=GA1.1.2008272138.1726617600&semt=ais_hybrid" alt="Portrait" />
+				<div class="fw-bold">David Lector</div>
+			</div>
+		</a>
+		<a class="nav-link text-dark" asp-page="/Profile">
+			<div class="mb-3 text-center">
+				<img class="img-fluid mb-3" src="https://writestylesonline.com/wp-content/uploads/2018/11/Three-Statistics-That-Will-Make-You-Rethink-Your-Professional-Profile-Picture-1024x1024.jpg" alt="Portrait" />
+				<div class="fw-bold">Katie Dawson</div>
+			</div>
+		</a>
+		<a class="nav-link text-dark" asp-page="/Profile">
+			<div class="mb-3 text-center">
+				<img class="img-fluid mb-3" src="https://www.adobe.com/creativecloud/photography/discover/media_1211f0f1379c0ec7b3758e0970180a380cff91073.png?width=750&format=png&optimize=medium" alt="Portrait" />
+				<div class="fw-bold">Robert Smith</div>
+			</div>
+		</a>
+		<a class="nav-link text-dark" asp-page="/Profile">
+			<div class="mb-3 text-center">
+				<img class="img-fluid mb-3" src="https://www.befunky.com/images/wp/wp-2021-01-linkedin-profile-picture-after.jpg?auto=avif,webp&format=jpg&width=944" alt="Portrait" />
+				<div class="fw-bold">Maddie Osterman</div>
+			</div>
+		</a>
+		<a class="nav-link text-dark" asp-page="/Profile">
+			<div class="mb-3 text-center">
+				<img class="img-fluid mb-3" src="https://i.pinimg.com/736x/59/37/5f/59375f2046d3b594d59039e8ffbf485a.jpg" alt="Portrait" />
+				<div class="fw-bold">xXfotoXx</div>
+			</div>
+		</a>
+		<a class="nav-link text-dark" asp-page="/Profile">
+			<div class="mb-3 text-center">
+				<img class="img-fluid mb-3" src="https://i.pinimg.com/564x/3c/1c/73/3c1c7364ed3445e25235b032ebc1dfe5.jpg" alt="Portrait" />
+				<div class="fw-bold">sadboo</div>
+			</div>
+		</a>
+		<a class="nav-link text-dark" asp-page="/Profile">
+			<div class="mb-3 text-center">
+				<img class="img-fluid mb-3" src="https://wallpapercave.com/wp/wp7992199.jpg" alt="Portrait" />
+				<div class="fw-bold">Jessica Wagner</div>
+			</div>
+		</a>
+		<a class="nav-link text-dark" asp-page="/Profile">
+			<div class="mb-3 text-center">
+				<img class="img-fluid mb-3" src="https://cdn.imgchest.com/files/j7mmcwv3dl7.png" alt="Portrait" />
+				<div class="fw-bold">gamerguy64</div>
+			</div>
+		</a>
+	</div>
 </div>
