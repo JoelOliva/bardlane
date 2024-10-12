@@ -39,6 +39,15 @@
 		</div>
 	</div>
 	<div class="row row-cols-2 row-cols-md-3 row-cols-md-4">
+		@foreach (var user in Model.Users)
+		{
+			<a class="nav-link text-dark" asp-page="/Profile">
+				<div class="mb-3 text-center">
+					<img class="img-fluid mb-3" src="@user.PicturePath" alt="Portrait" />
+					<div class="fw-bold">David Lector</div>
+				</div>
+			</a>
+		}
 		<a class="nav-link text-dark" asp-page="/Profile">
 			<div class="mb-3 text-center">
 				<img class="img-fluid mb-3" src="https://img.freepik.com/free-photo/portrait-man-laughing_23-2148859448.jpg?size=338&ext=jpg&ga=GA1.1.2008272138.1726617600&semt=ais_hybrid" alt="Portrait" />
@@ -54,7 +63,7 @@
 		<a class="nav-link text-dark" asp-page="/Profile">
 			<div class="mb-3 text-center">
 				<img class="img-fluid mb-3" src="https://www.adobe.com/creativecloud/photography/discover/media_1211f0f1379c0ec7b3758e0970180a380cff91073.png?width=750&format=png&optimize=medium" alt="Portrait" />
-				<div class="fw-bold">Robert Smith</div>
+				<div class="fw-bold">Rober Smith</div>
 			</div>
 		</a>
 		<a class="nav-link text-dark" asp-page="/Profile">

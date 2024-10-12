@@ -1,11 +1,17 @@
 using Microsoft.AspNetCore.Mvc.RazorPages;
+using Web.Data;
+using Web.Models;
 
 namespace Web.Pages
 {
-    public class ProducersModel : PageModel
+    public class ProducersModel(ApplicationDbContext context) : PageModel
     {
-        public void OnGet()
+        private readonly ApplicationDbContext _context = context;
+        public required ApplicationUser[] Users;
+
+		public void OnGet()
         {
+            Users = _context.ApplicationUsers.ToArray();
         }
     }
 }
