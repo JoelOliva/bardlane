@@ -1,4 +1,9 @@
 ﻿#filter {
-    width: 400px;
+    width: 250px;
     height: 650px;
+}
+
+#filter-label {
+    border-bottom: 2px solid grey;
+    width: fit-content;
 }

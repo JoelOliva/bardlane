@@ -9,6 +9,7 @@ namespace Web.Models
 	{
 		[MaxLength(100)]
 		public string? Name { get; set; }
-		public string PicturePath { get; set; } = "images/profile-icon.png";
+		public string? AboutMe { get; set; }
+		public string PicturePath { get; set; } = "~/images/profile-icon.png";
 	}
 }

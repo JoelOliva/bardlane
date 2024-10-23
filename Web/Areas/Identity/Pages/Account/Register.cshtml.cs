@@ -1,6 +1,4 @@
-﻿// Licensed to the .NET Foundation under one or more agreements.
-// The .NET Foundation licenses this file to you under the MIT license.
-#nullable disable
+﻿#nullable disable
 
 using System.ComponentModel.DataAnnotations;
 using System.Text;
@@ -24,7 +22,7 @@ namespace Web.Areas.Identity.Pages.Account
         private readonly IUserEmailStore<ApplicationUser> _emailStore;
         private readonly ILogger<RegisterModel> _logger;
         private readonly IEmailSender _emailSender;
-		private static readonly HttpClient _client = new() { BaseAddress = new Uri("https://random-word-api.herokuapp.com/word?number=2") };
+		private static readonly HttpClient _client = new() { BaseAddress = new Uri("https://random-word-api.vercel.app/api?words=2") };
         private Random _random;
 
         public RegisterModel(
