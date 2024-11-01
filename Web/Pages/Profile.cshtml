@@ -24,7 +24,10 @@
 				<button class="btn btn-primary">Continue</button>
 			</div>
 		</div>
-		<h4 class="ms-5 pt-4">My Tracks</h4>
+		<div class="d-flex justify-content-between align-items-center">
+			<h4 class="ms-5 pt-4">My Tracks</h4>
+			<button type="button" class="btn btn-success" id="add-track">Add track</button>
+		</div>
 		<table id="playlist" class="table table-hover mx-auto text-end mt-4" style="width: 600px">
 			<tbody>
 				<tr>
@@ -100,3 +103,18 @@
 		<button class="btn btn-secondary d-block mx-auto mt-3">Conctact Me</button>
 	</div>
 </div>
+<div id="overlay">
+	<div>
+		<div class="d-flex justify-content-between">
+			<input type="file" class="form-control" accept="audio/mp3, audio/wav, audio/ogg"/>
+			<button type="button" class="btn" id="close-overlay"><svg xmlns="http://www.w3.org/2000/svg" width="1.5em" height="1.5em" viewBox="0 0 32 32"><path fill="currentColor" d="M16 2C8.2 2 2 8.2 2 16s6.2 14 14 14s14-6.2 14-14S23.8 2 16 2m5.4 21L16 17.6L10.6 23L9 21.4l5.4-5.4L9 10.6L10.6 9l5.4 5.4L21.4 9l1.6 1.6l-5.4 5.4l5.4 5.4z"/></svg></button>
+		</div>
+		<input class="form-control" id="title"/>
+		<button type="button" class="btn btn-success" id="upload-track">Add</button>
+	</div>
+</div>
+<input type=hidden id="username" value="@Model.UserName"/>
+
+@section Scripts {
+	<script src="~/js/profile.js"></script>
+}
