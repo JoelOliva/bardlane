@@ -1,24 +1,24 @@
-﻿using Web.Models;
+﻿using Microsoft.AspNetCore.Identity;
+using Web.Models;
 
 namespace Web.Data
 {
-	public class DbSeeder
+	public class DbSeeder(RoleManager<IdentityRole> roleManager, UserManager<ApplicationUser> userManager)
 	{
-		private readonly ApplicationDbContext _context;
+		private readonly RoleManager<IdentityRole> _roleManager = roleManager;
+		private readonly UserManager<ApplicationUser> _userManager = userManager;
 
-		public DbSeeder(ApplicationDbContext context) {
-			_context = context;
-		}
-
-		public void Seed()
+		public async Task Seed()
 		{
-			//if (!_context.ApplicationUsers.Any())
-			//{
-			//	_context.ApplicationUsers.AddRange(
-			//		new ApplicationUser { UserName = "rsmith99", Name = "Robert Smith", PicturePath = "https://www.adobe.com/creativecloud/photography/discover/media_1211f0f1379c0ec7b3758e0970180a380cff91073.png?width=750&format=png&optimize=medium" }
-			//	);
-			//	_context.SaveChanges();
-			//}
+			if (!_roleManager.Roles.Any())
+			{
+				await _roleManager.CreateAsync(new IdentityRole("Admin"));
+				await _roleManager.CreateAsync(new IdentityRole("Producer"));
+
+				ApplicationUser user = new() { UserName = "admin", Email = "admin@gmail.com" };
+				await _userManager.CreateAsync(user, "Password_84");
+				await _userManager.AddToRoleAsync(user, "Admin");
+			}
 		}
 	}
 }
