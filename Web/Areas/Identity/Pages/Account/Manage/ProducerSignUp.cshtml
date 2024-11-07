@@ -1,0 +1,52 @@
+﻿@page
+@model Web.Areas.Identity.Pages.Account.Manage.ProducerSignUpModel
+@{
+}
+
+<form method="post">
+	<div class="form-floating mb-3">
+		<textarea asp-for="AboutMe" class="form-control"></textarea>
+		<label asp-for="AboutMe" class="form-label">About Me</label>
+	</div>
+	<h3 class="mt-4 text-center">Packages</h3>
+	<h4>Basic</h4>
+	<div class="form-floating mb-3">
+		<input asp-for="BasicPrice" type="number" class="form-control"/>
+		<label asp-for="BasicPrice" class="form-label">Price</label>
+	</div>
+	<div class="form-floating mb-3">
+		<input asp-for="BasicDeliveryTime" type="number" class="form-control"/>
+		<label asp-for="BasicDeliveryTime" class="form-label">Delivery time (Days)</label>
+	</div>
+	<div class="form-floating mb-3">
+		<textarea asp-for="BasicDescription" class="form-control"></textarea>
+		<label asp-for="BasicDescription" class="form-label">Description</label>
+	</div>
+	<h4>Standard</h4>
+	<div class="form-floating mb-3">
+		<input asp-for="StandardPrice" type="number" class="form-control"/>
+		<label asp-for="StandardPrice" class="form-label">Price</label>
+	</div>
+	<div class="form-floating mb-3">
+		<input asp-for="StandardDeliveryTime" type="number" class="form-control"/>
+		<label asp-for="StandardDeliveryTime" class="form-label">Delivery time (Days)</label>
+	</div>
+	<div class="form-floating mb-3">
+		<textarea asp-for="StandardDescription" class="form-control"></textarea>
+		<label asp-for="StandardDescription" class="form-label">Description</label>
+	</div>
+	<h4>Premium</h4>
+	<div class="form-floating mb-3">
+		<input asp-for="PremiumPrice" type="number" class="form-control"/>
+		<label asp-for="PremiumPrice" class="form-label">Price</label>
+	</div>
+	<div class="form-floating mb-3">
+		<input asp-for="PremiumDeliveryTime" type="number" class="form-control"/>
+		<label asp-for="PremiumDeliveryTime" class="form-label">Delivery time (Days)</label>
+	</div>
+	<div class="form-floating mb-3">
+		<textarea asp-for="PremiumDescription" class="form-control"></textarea>
+		<label asp-for="PremiumDescription" class="form-label">Description</label>
+	</div>
+	<button class="btn btn-primary">Submit</button>
+</form>

@@ -30,7 +30,8 @@ using (var scope = app.Services.CreateScope())
     {
         var roleManager = services.GetRequiredService<RoleManager<IdentityRole>>();
         var userManager = services.GetRequiredService<UserManager<ApplicationUser>>();
-        var seeder = new DbSeeder(roleManager, userManager);
+        var context = services.GetRequiredService<ApplicationDbContext>();
+        var seeder = new DbSeeder(roleManager, userManager, context);
         await seeder.Seed();
     }
     catch (Exception ex)
