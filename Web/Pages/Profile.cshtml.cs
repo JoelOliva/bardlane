@@ -15,6 +15,7 @@ namespace Web.Pages
         public required string Email;
         public string? AboutMe;
         public required string PicturePath;
+        public Track[] Tracks = [];
 
         public async Task<IActionResult> OnGetAsync(string username)
         {
@@ -28,6 +29,8 @@ namespace Web.Pages
             Email = user.Email;
             AboutMe = user.AboutMe;
             PicturePath = user.PicturePath;
+            Tracks = _context.Tracks.Where(t => t.ApplicationUserId == user.Id).ToArray();
+
             return Page();
         }
 
@@ -36,7 +39,8 @@ namespace Web.Pages
             // Add file to filesystem
             string[] filenameParts  = file.FileName.Split('.');
             string fileExtension = "." + filenameParts[filenameParts.Length - 1];
-            string path = Path.Combine(_env.WebRootPath, "audio", Path.GetRandomFileName() + fileExtension);
+            string fileName = Path.GetRandomFileName() + fileExtension;
+            string path = Path.Combine(_env.WebRootPath, "audio", fileName);
             using (FileStream destination = new FileStream(path, FileMode.Create))
             {
                 await file.CopyToAsync(destination);
@@ -44,7 +48,8 @@ namespace Web.Pages
 
             // Add file to database
             var user = await _userManager.GetUserAsync(User);
-            Track track = new Track { ApplicationUserId = user.Id, Title = title, Path = path };
+            string relativePath = Path.Combine("~/audio", fileName);
+            Track track = new Track { ApplicationUserId = user.Id, Title = title, Path = relativePath };
             await _context.Tracks.AddAsync(track);
 			await _context.SaveChangesAsync();
 

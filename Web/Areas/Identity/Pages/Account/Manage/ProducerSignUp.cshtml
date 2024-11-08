@@ -19,7 +19,7 @@
 		<label asp-for="BasicDeliveryTime" class="form-label">Delivery time (Days)</label>
 	</div>
 	<div class="form-floating mb-3">
-		<textarea asp-for="BasicDescription" class="form-control"></textarea>
+		<textarea asp-for="BasicDescription" class="form-control" required></textarea>
 		<label asp-for="BasicDescription" class="form-label">Description</label>
 	</div>
 	<h4>Standard</h4>
@@ -32,7 +32,7 @@
 		<label asp-for="StandardDeliveryTime" class="form-label">Delivery time (Days)</label>
 	</div>
 	<div class="form-floating mb-3">
-		<textarea asp-for="StandardDescription" class="form-control"></textarea>
+		<textarea asp-for="StandardDescription" class="form-control" required></textarea>
 		<label asp-for="StandardDescription" class="form-label">Description</label>
 	</div>
 	<h4>Premium</h4>
@@ -45,7 +45,7 @@
 		<label asp-for="PremiumDeliveryTime" class="form-label">Delivery time (Days)</label>
 	</div>
 	<div class="form-floating mb-3">
-		<textarea asp-for="PremiumDescription" class="form-control"></textarea>
+		<textarea asp-for="PremiumDescription" class="form-control" required></textarea>
 		<label asp-for="PremiumDescription" class="form-label">Description</label>
 	</div>
 	<button class="btn btn-primary">Submit</button>
