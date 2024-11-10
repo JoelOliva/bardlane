@@ -1,4 +1,6 @@
-﻿const tracks = document.getElementsByClassName("track");
+﻿import { getFormattedTime } from "./site.js";
+
+const tracks = document.getElementsByClassName("track");
 const durations = document.getElementsByClassName("duration");
 const username = document.getElementById("username");
 const overlay = document.getElementById("overlay");
@@ -58,16 +60,9 @@ function resetUploadForm() {
     titleInput.style.outline = "";
 }
 
-function getFormattedDuration(seconds) {
-    const minutes = Math.trunc(seconds / 60);
-    seconds = Math.trunc(seconds % 60);
-
-    return minutes + ":" + seconds;
-}
-
 function displayAudioDuration() {
     for (let i = 0; i < tracks.length; i++) {
-        durations[i].textContent = getFormattedDuration(tracks[i].duration);
+        durations[i].textContent = getFormattedTime(tracks[i].duration);
     }
 }
 
