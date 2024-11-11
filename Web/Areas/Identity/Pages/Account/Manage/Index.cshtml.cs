@@ -17,10 +17,12 @@ namespace Web.Areas.Identity.Pages.Account.Manage
 
         public IndexModel(
             UserManager<ApplicationUser> userManager,
-            SignInManager<ApplicationUser> signInManager)
+            SignInManager<ApplicationUser> signInManager,
+            ApplicationDbContext context)
         {
             _userManager = userManager;
             _signInManager = signInManager;
+            _context = context;
         }
 
 		public string PicturePath { get; set; }
@@ -109,6 +111,10 @@ namespace Web.Areas.Identity.Pages.Account.Manage
                     return RedirectToPage();
                 }
             }
+
+            user.Name = Input.Name;
+            user.AboutMe = Input.AboutMe;
+            await _context.SaveChangesAsync();
 
             await _signInManager.RefreshSignInAsync(user);
             StatusMessage = "Your profile has been updated";

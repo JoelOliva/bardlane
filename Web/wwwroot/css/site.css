@@ -44,3 +44,9 @@ img {
 textarea {
     height: 150px !important;
 }
+
+pre {
+    font-size: 1em;
+    font-family: inherit;
+    white-space: pre-wrap;
+}

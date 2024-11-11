@@ -17,6 +17,7 @@ namespace Web.Pages
         public required string PicturePath;
         public Track[] Tracks = [];
         public List<string> TrackTitles = [];
+        public Dictionary<string, Package> Packages = [];
 
         public async Task<IActionResult> OnGetAsync(string username)
         {
@@ -34,6 +35,12 @@ namespace Web.Pages
             for (int i = 0; i < Tracks.Length; i++)
             {
                 TrackTitles.Add(Tracks[i].Title);
+            }
+            var packages = _context.Packages.Where(p => p.ApplicationUserId == user.Id);
+            foreach (var package in packages)
+            {
+                var packageType = _context.PackageTypes.Where(pt => pt.Id == package.PackageTypeId).First();
+                Packages.Add(packageType.Name, package);
             }
 
             return Page();
