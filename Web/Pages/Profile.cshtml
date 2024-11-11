@@ -33,14 +33,14 @@
 		</div>
 		<table id="playlist" class="table table-hover mx-auto text-end mt-4" style="width: 600px">
 			<tbody>
-				@foreach (var track in Model.Tracks)
+				@for (int i = 0; i < Model.Tracks.Length; i++)
 				{
 					<tr>
 						<td class="d-flex justify-content-between align-items-center">
-							<button class="btn"><svg xmlns="http://www.w3.org/2000/svg" width="1.5em" height="1.5em" viewBox="0 0 24 24"><path fill="grey" d="M19.105 11.446a2.34 2.34 0 0 1-.21 1c-.15.332-.38.62-.67.84l-9.65 7.51a2.3 2.3 0 0 1-1.17.46h-.23a2.2 2.2 0 0 1-1-.24a2.29 2.29 0 0 1-1.28-2v-14a2.2 2.2 0 0 1 .33-1.17a2.27 2.27 0 0 1 2.05-1.1c.412.02.812.148 1.16.37l9.66 6.44c.294.204.54.47.72.78c.19.34.29.721.29 1.11" /></svg></button>
-							<audio src="@Url.Content(track.Path)" class="track"></audio>
+							<button class="btn" id="@i"><svg xmlns="http://www.w3.org/2000/svg" width="1.5em" height="1.5em" viewBox="0 0 24 24"><path fill="grey" d="M19.105 11.446a2.34 2.34 0 0 1-.21 1c-.15.332-.38.62-.67.84l-9.65 7.51a2.3 2.3 0 0 1-1.17.46h-.23a2.2 2.2 0 0 1-1-.24a2.29 2.29 0 0 1-1.28-2v-14a2.2 2.2 0 0 1 .33-1.17a2.27 2.27 0 0 1 2.05-1.1c.412.02.812.148 1.16.37l9.66 6.44c.294.204.54.47.72.78c.19.34.29.721.29 1.11" /></svg></button>
+							<audio src="@Url.Content(Model.Tracks[i].Path)" class="track"></audio>
 							<div class="text-secondary duration"></div>
-							<div class="me-3 d-inline flex-grow-1">@track.Title</div>
+							<div class="me-3 d-inline flex-grow-1">@Model.Tracks[i].Title</div>
 						</td>
 					</tr>
 				}
@@ -76,7 +76,11 @@
 	<input type=hidden id="username" value="@Model.UserName" />
 }
 
+@using System.Text.Json
 @section Scripts {
+	<script>
+		const tracks = @Json.Serialize(Model.TrackTitles);
+	</script>
 	<script type="module" src="~/js/profile.js"></script>
 	<script type="module" src="~/js/player.js"></script>
 }

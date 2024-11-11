@@ -16,6 +16,7 @@ namespace Web.Pages
         public string? AboutMe;
         public required string PicturePath;
         public Track[] Tracks = [];
+        public List<string> TrackTitles = [];
 
         public async Task<IActionResult> OnGetAsync(string username)
         {
@@ -30,6 +31,10 @@ namespace Web.Pages
             AboutMe = user.AboutMe;
             PicturePath = user.PicturePath;
             Tracks = _context.Tracks.Where(t => t.ApplicationUserId == user.Id).ToArray();
+            for (int i = 0; i < Tracks.Length; i++)
+            {
+                TrackTitles.Add(Tracks[i].Title);
+            }
 
             return Page();
         }
