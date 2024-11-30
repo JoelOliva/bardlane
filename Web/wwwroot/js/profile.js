@@ -1,5 +1,7 @@
 ﻿import { getFormattedTime } from "./site.js";
 
+let currentPackage = document.getElementById("basic");
+let currentPackageTab = document.getElementById("basicBtn");
 const tracks = document.getElementsByClassName("track");
 const durations = document.getElementsByClassName("duration");
 const username = document.getElementById("username");
@@ -10,6 +12,13 @@ const uploadTrackBtn = document.getElementById("upload-track");
 closeOverlayBtn.addEventListener("click", closeOverlay);
 addTrackBtn.addEventListener("click", showAddTrackOverlay);
 uploadTrackBtn.addEventListener("click", uploadTrack);
+
+const basicBtn = document.getElementById("basicBtn");
+const standardBtn = document.getElementById("standardBtn");
+const premiumBtn = document.getElementById("premiumBtn");
+basicBtn.addEventListener("click", () => { checkout("basic"); });
+standardBtn.addEventListener("click", () => { checkout("standard"); });
+premiumBtn.addEventListener("click", () => { checkout("premium"); });
 
 const interval = setInterval(audioHasLoaded, 100);
 
@@ -73,4 +82,18 @@ function audioHasLoaded() {
 
     clearInterval(interval);
     displayAudioDuration();
+}
+
+function checkout(packageType) {
+    const packageContainer = document.getElementById(packageType);
+    packageContainer.style.display = "block";
+    currentPackage.style.display = "none";
+    currentPackage = packageContainer;
+
+    const packageTab = document.getElementById(packageType + "Btn");
+    packageTab.classList.remove("btn-secondary");
+    packageTab.classList.add("btn-warning");
+    currentPackageTab.classList.remove("btn-warning");
+    currentPackageTab.classList.add("btn-secondary");
+    currentPackageTab = packageTab;
 }
