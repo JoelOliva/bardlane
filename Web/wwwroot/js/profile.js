@@ -16,9 +16,9 @@ uploadTrackBtn.addEventListener("click", uploadTrack);
 const basicBtn = document.getElementById("basicBtn");
 const standardBtn = document.getElementById("standardBtn");
 const premiumBtn = document.getElementById("premiumBtn");
-basicBtn.addEventListener("click", () => { checkout("basic"); });
-standardBtn.addEventListener("click", () => { checkout("standard"); });
-premiumBtn.addEventListener("click", () => { checkout("premium"); });
+basicBtn.addEventListener("click", () => { changePackage("basic"); });
+standardBtn.addEventListener("click", () => { changePackage("standard"); });
+premiumBtn.addEventListener("click", () => { changePackage("premium"); });
 
 const interval = setInterval(audioHasLoaded, 100);
 
@@ -84,7 +84,7 @@ function audioHasLoaded() {
     displayAudioDuration();
 }
 
-function checkout(packageType) {
+function changePackage(packageType) {
     const packageContainer = document.getElementById(packageType);
     packageContainer.style.display = "block";
     currentPackage.style.display = "none";

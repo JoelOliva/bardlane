@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Web.Data;
 using Web.Models;
+using Web.Utilities;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -19,6 +20,15 @@ builder.Services.AddScoped<IUserClaimsPrincipalFactory<ApplicationUser>, UserCla
 builder.Services.AddRazorPages().AddRazorPagesOptions(options =>
 {
     options.Conventions.ConfigureFilter(new IgnoreAntiforgeryTokenAttribute());
+});
+
+builder.Services.AddSingleton(provider =>
+{
+    var config = builder.Configuration.GetSection("PayPal");
+    return new PayPal(
+        config["ClientId"],
+		config["ClientSecret"]
+    );
 });
 
 var app = builder.Build();

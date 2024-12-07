@@ -1,0 +1,12 @@
+﻿@page
+@model Web.Pages.CheckoutModel
+@{
+}
+<div id="paypal-button-container" class="mx-auto"></div>
+<p id="result-message"></p>
+
+@section Scripts {
+	<script src="https://www.paypal.com/sdk/js?client-id=AWGPnm9sltvZScP_Jzci-L4Zz_uj2ACuG0ZysBklXWJ1OJKmUY9zD11XZYWEhNd1VlCjqSzZbgvY6ABs&buyer-country=US&currency=USD&components=buttons&enable-funding=venmo,paylater,card"
+			data-sdk-integration-source="developer-studio"></script>
+	<script src="~/js/checkout.js"></script>
+}
