@@ -57,8 +57,6 @@
                     throw new Error(
                         `${errorDetail.description} (${orderData.debug_id})`
                     );
-                } else if (!orderData.purchase_units) {
-                    throw new Error(JSON.stringify(orderData));
                 } else {
                     // Successful transaction, redirect
                     const transaction =
@@ -71,7 +69,7 @@
                         orderData,
                         JSON.stringify(orderData, null, 2)
                     );
-                    actions.redirect("Index");
+                    actions.redirect("http://localhost:5148/Success");
                 }
             } catch (error) {
                 console.error(error);
