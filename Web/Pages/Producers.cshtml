@@ -7,40 +7,17 @@
 <div class="d-flex">
 	<div id="filter" class="fs-5 mt-5">
 		<div id="filter-label">Filter by Genre</div>
-		<div>
-			<input type="checkbox" id="jazz" checked/>
-			<label for="jazz">jazz</label>
-		</div>
-		<div>
-			<input type="checkbox" id="country"/>
-			<label for="country">country</label>
-		</div>
-		<div>
-			<input type="checkbox" id="rock" checked/>
-			<label for="rock">rock</label>
-		</div>
-		<div>
-			<input type="checkbox" id="pop"/>
-			<label for="pop">pop</label>
-		</div>
-		<div>
-			<input type="checkbox" id="classical"/>
-			<label for="classical">classical</label>
-		</div>
-		<div>
-			<input type="checkbox" id="techno"/>
-			<label for="techno">techno</label>
-		</div>
-		<div>
-			<input type="checkbox" id="funk"/>
-			<label for="funk">funk</label>
-		</div>
-		<div>
-			<input type="checkbox" id="folk"/>
-			<label for="folk">folk</label>
+		<div id="genre">
+			@foreach (var genre in Model.Genres)
+			{
+				<div>
+					<input type="checkbox" id="@genre.Name">
+					<label for="@genre.Name">@genre.Name</label>
+				</div>
+			}
 		</div>
 	</div>
-	<div class="row row-cols-2 row-cols-md-3 row-cols-md-4 w-100">
+	<div id="producer" class="row row-cols-2 row-cols-md-3 row-cols-md-4 w-100">
 		@foreach (var user in Model.Producers)
 		{
 			<a class="nav-link text-dark" asp-page="/Profile" asp-route-username="@user.UserName">
@@ -52,3 +29,7 @@
 		}
 	</div>
 </div>
+
+@section Scripts {
+	<script src="~/js/producers.js"></script>
+}

@@ -30,6 +30,25 @@ namespace Web.Data
 				await _context.PackageTypes.AddAsync(packageType3);
 				await _context.SaveChangesAsync();
 			}
+			if (!_context.GenreTypes.Any())
+			{
+				HashSet<GenreType> genres = [];
+				genres.Add(new() { Name = "Rock" });
+				genres.Add(new() { Name = "Jazz" });
+				genres.Add(new() { Name = "Classical" });
+				genres.Add(new() { Name = "Techno" });
+				genres.Add(new() { Name = "Country" });
+				genres.Add(new() { Name = "Folk" });
+				genres.Add(new() { Name = "Funk" });
+				genres.Add(new() { Name = "Ambient" });
+				genres.Add(new() { Name = "Latin" });
+
+				foreach (GenreType genre in genres)
+				{
+					await _context.GenreTypes.AddAsync(genre);
+				}
+				await _context.SaveChangesAsync();
+			}
 		}
 	}
 }

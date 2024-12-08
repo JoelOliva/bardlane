@@ -1,6 +1,7 @@
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
+using Microsoft.EntityFrameworkCore;
 using Web.Data;
 using Web.Models;
 
@@ -18,6 +19,7 @@ namespace Web.Pages
         public Track[] Tracks = [];
         public List<string> TrackTitles = [];
         public Dictionary<string, Package> Packages = [];
+        public List<string> Genres = [];
 
         public async Task<IActionResult> OnGetAsync(string username)
         {
@@ -41,6 +43,13 @@ namespace Web.Pages
             {
                 var packageType = _context.PackageTypes.Where(pt => pt.Id == package.PackageTypeId).First();
                 Packages.Add(packageType.Name, package);
+            }
+
+            Genre[] userGenres = _context.Genres.Where(g => g.ApplicationUserId == user.Id).ToArray();
+            foreach (Genre userGenre in userGenres)
+            {
+                GenreType genreType = await _context.GenreTypes.Where(gt => gt.Id == userGenre.GenreTypeId).FirstAsync();
+                Genres.Add(genreType.Name);
             }
 
             return Page();

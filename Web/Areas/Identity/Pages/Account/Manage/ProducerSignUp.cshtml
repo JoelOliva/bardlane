@@ -8,6 +8,14 @@
 		<textarea asp-for="AboutMe" class="form-control"></textarea>
 		<label asp-for="AboutMe" class="form-label">About Me</label>
 	</div>
+
+	<label asp-for="SelectedGenres">Music styles:</label>
+	<select asp-for="SelectedGenres" class="form-control" multiple>
+		@foreach (var genre in Model.Genres)
+		{
+			<option value="@genre.Name">@genre.Name</option>
+		}
+	</select>
 	<h3 class="mt-4 text-center">Packages</h3>
 	<h4>Basic</h4>
 	<div class="form-floating mb-3">

@@ -12,7 +12,7 @@ namespace Web.Areas.Identity.Pages.Account.Manage
     {
         private readonly UserManager<ApplicationUser> _userManager = userManager;
         private readonly ApplicationDbContext _context = context;
-
+        public GenreType[] Genres;
 
         public required string AboutMe { get; set; }
         public int BasicPrice { get; set; }
@@ -24,9 +24,11 @@ namespace Web.Areas.Identity.Pages.Account.Manage
         public required string BasicDescription { get; set; }
         public required string StandardDescription { get; set; }
         public required string PremiumDescription { get; set; }
+        public required string[] SelectedGenres { get; set; }
 
         public void OnGet()
         {
+            Genres = _context.GenreTypes.ToArray();
         }
 
         public async Task<IActionResult> OnPost()
@@ -59,6 +61,13 @@ namespace Web.Areas.Identity.Pages.Account.Manage
                 DeliveryTime = PremiumDeliveryTime,
                 Description = PremiumDescription
             };
+
+            foreach (string selectedGenre in SelectedGenres)
+            {
+                var genreType = await _context.GenreTypes.Where(gt => gt.Name == selectedGenre).FirstAsync();
+                Genre genre = new Genre() { ApplicationUserId = user.Id, GenreTypeId = genreType.Id };
+                await _context.Genres.AddAsync(genre);
+            }
 
             await _context.Packages.AddAsync(basic);
             await _context.Packages.AddAsync(standard);

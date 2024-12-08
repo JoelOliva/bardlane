@@ -76,7 +76,12 @@
 			<p class="ms-3 fw-bold">@Model.UserName</p>
 		</div>
 		<div class="p-3 border border-top-0">
-			<p class="text-secondary">MUSIC STYLES: <span class="fw-bold">Jazz, Bossa Nova, Ambient</span></p>
+			<p class="text-secondary">MUSIC STYLES:
+					@foreach (var genre in Model.Genres)
+					{
+						<span class="fw-bold"> @genre </span>
+					}
+			</p>
 			<pre>@Model.AboutMe</pre>
 		</div>
 		<button class="btn btn-secondary d-block mx-auto mt-3">Conctact Me</button>
