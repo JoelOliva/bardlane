@@ -24,7 +24,7 @@ async function filter() {
         producerContainer.innerHTML += `
 			<a class="nav-link text-dark" asp-page="/Profile" href="/Profile/${producer.userName}">
 				<div class="mb-3 text-center">
-					<img class="img-fluid mb-3" src="${producer.picturePath}" alt="Portrait" />
+					<img class="mb-3" src="${producer.picturePath}" alt="Portrait" />
 					<div class="fw-bold">${producer.userName}</div>
 				</div>
 			</a>
