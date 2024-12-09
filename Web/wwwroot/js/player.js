@@ -24,6 +24,8 @@ for (const button of playButtons) {
 
     if (username != null)
         trackDetails.push({ "title": tracks[button.id], "producer": username.value });
+    else
+        trackDetails.push({ "title": tracks[button.id], "producer": trackAuthors[button.id] });
 }
 mainPlayButton.addEventListener("click", updatePlayer);
 

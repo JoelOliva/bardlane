@@ -1,5 +1,10 @@
 ﻿import { getFormattedTime } from "./site.js";
 
+
+const player = document.getElementById("player");
+player.classList.remove("d-none");
+player.classList.add("d-flex");
+
 let currentPackage = document.getElementById("basic");
 let currentPackageTab = document.getElementById("basicBtn");
 const tracks = document.getElementsByClassName("track");
