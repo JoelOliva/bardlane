@@ -14,15 +14,19 @@ namespace Web.Areas.Identity.Pages.Account.Manage
         private readonly UserManager<ApplicationUser> _userManager;
         private readonly SignInManager<ApplicationUser> _signInManager;
         private readonly ApplicationDbContext _context;
+        private readonly IWebHostEnvironment _env;
 
         public IndexModel(
             UserManager<ApplicationUser> userManager,
             SignInManager<ApplicationUser> signInManager,
-            ApplicationDbContext context)
+            ApplicationDbContext context,
+			IWebHostEnvironment env
+            )
         {
             _userManager = userManager;
             _signInManager = signInManager;
             _context = context;
+            _env = env;
         }
 
 		public string PicturePath { get; set; }
@@ -70,7 +74,7 @@ namespace Web.Areas.Identity.Pages.Account.Manage
             return Page();
         }
 
-        public async Task<IActionResult> OnPostAsync()
+        public async Task<IActionResult> OnPostAsync(IFormFile file)
         {
             var user = await _userManager.GetUserAsync(User);
             if (user == null)
@@ -110,6 +114,24 @@ namespace Web.Areas.Identity.Pages.Account.Manage
                     StatusMessage = "Unexpected error when trying to set phone number.";
                     return RedirectToPage();
                 }
+            }
+
+
+            if (file != null)
+            {
+                // Add file to filesystem
+                string[] filenameParts = file.FileName.Split('.');
+                string fileExtension = "." + filenameParts[filenameParts.Length - 1];
+                string fileName = Path.GetRandomFileName() + fileExtension;
+                string path = Path.Combine(_env.WebRootPath, "images", fileName);
+                using (FileStream destination = new FileStream(path, FileMode.Create))
+                {
+                    await file.CopyToAsync(destination);
+                }
+
+                // Add file to database
+                string relativePath = Path.Combine("~/images", fileName);
+                user.PicturePath = relativePath;
             }
 
             user.Name = Input.Name;
